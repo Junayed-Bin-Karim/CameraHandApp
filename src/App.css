@@ -1,0 +1,79 @@
+.app {
+  min-height: 100vh;
+  background: transparent;
+  padding: 0;
+}
+
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 0;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.app-main {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.camera-container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.camera-video {
+  display: block;
+  background: #000;
+}
+
+.loading-overlay,
+.error-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 10;
+}
+
+.error-overlay {
+  background: rgba(220, 38, 38, 0.9);
+}
+
+.status {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.status p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+.status p:first-child {
+  color: #10b981;
+  font-weight: 600;
+}
