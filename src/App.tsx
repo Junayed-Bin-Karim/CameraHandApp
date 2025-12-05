@@ -210,7 +210,7 @@ function App() {
         rel="noopener noreferrer"
         style={{
           color: '#60a5fa',
-          textDecoration: 'none',
+          textDecoration: 'none', 
           margin: '0 5px',
         }}
         onMouseOver={e => (e.target.style.color = '#3b82f6')}
