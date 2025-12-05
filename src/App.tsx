@@ -191,7 +191,7 @@ function App() {
       
       <footer className="app-footer">
         <p className="footer-credit">
-          Built by <a href="https://junayed-airnotes.netlify.app/" target="_blank" rel="noopener noreferrer">Junayed Bin Karim</a>
+          Built by <a href="https://meetjunayed.netlify.app/" target="_blank" rel="noopener noreferrer">Junayed Bin Karim</a>
         </p>
       </footer>
     </div>
