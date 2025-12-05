@@ -150,7 +150,6 @@ function App() {
             <li>Your index finger controls the cursor</li>
             <li>Pinch (thumb + index) to click</li>
             <li>Make a fist to drag notes</li>
-            <li>Use left buttons to add/manage notes</li>
           </ul>
         </div>
       </div>
