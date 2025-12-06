@@ -188,7 +188,13 @@ function App() {
         onExit={() => setIsDrawingMode(false)}
       />
       {showPerformanceStats && <PerformanceStats hands={hands} isTracking={isTracking} />}
-      
+      <footer className="app-footer">
+  <p className="footer-credit">
+    Built by <a href="https://meetjunayed.netlify.app/" target="_blank" rel="noopener noreferrer">Md Junayed Bin Karim</a> ·
+    <a href="https://linkedin.com/in/junayed-bin-karim-47b755270" target="_blank" rel="noopener noreferrer" style={{ marginLeft: "6px" }}>LinkedIn</a>
+  </p>
+</footer>
+
       
     </div>
   );
