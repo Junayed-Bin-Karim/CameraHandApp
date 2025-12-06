@@ -24,6 +24,7 @@ export default function useHandTracking({ videoElement }: UseHandTrackingProps) 
   const handLandmarkerRef = useRef<HandLandmarker | null>(null);
   const animationRef = useRef<number | null>(null);
   const lastUpdate = useRef<number>(0);
+  const frameCount = useRef<number>(0);
 
   useEffect(() => {
     if (!videoElement) return;
@@ -41,11 +42,11 @@ export default function useHandTracking({ videoElement }: UseHandTrackingProps) 
             modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
             delegate: 'GPU',
           },
-          numHands: 2,
+          numHands: 1, // Track only 1 hand for higher FPS
           runningMode: 'VIDEO',
-          minHandDetectionConfidence: 0.8,
-          minHandPresenceConfidence: 0.8,
-          minTrackingConfidence: 0.8,
+          minHandDetectionConfidence: 0.5, // lower threshold for faster processing
+          minHandPresenceConfidence: 0.5,
+          minTrackingConfidence: 0.5,
         });
 
         handLandmarkerRef.current = handLandmarker;
@@ -68,6 +69,13 @@ export default function useHandTracking({ videoElement }: UseHandTrackingProps) 
         return;
       }
 
+      frameCount.current++;
+      const FRAME_SKIP = 1; // Detect every other frame (adjustable)
+      if (frameCount.current % (FRAME_SKIP + 1) !== 0) {
+        animationRef.current = requestAnimationFrame(detectHands);
+        return;
+      }
+
       const startTimeMs = performance.now();
       const results = handLandmarkerRef.current.detectForVideo(videoElement, startTimeMs);
       const detectedHands: HandData[] = [];
@@ -76,7 +84,7 @@ export default function useHandTracking({ videoElement }: UseHandTrackingProps) 
         results.landmarks.forEach((handLandmarks: NormalizedLandmark[], index: number) => {
           const handedness = results.handedness[index]?.[0]?.categoryName as 'Left' | 'Right';
           const score = results.handedness[index]?.[0]?.score || 0;
-          if (score >= 0.8) {
+          if (score >= 0.5) {
             detectedHands.push({
               landmarks: handLandmarks.map(lm => ({ x: lm.x, y: lm.y, z: lm.z })),
               handedness,
@@ -88,6 +96,7 @@ export default function useHandTracking({ videoElement }: UseHandTrackingProps) 
 
       const now = performance.now();
       if (now - lastUpdate.current > 16) {
+        // update roughly every 16ms (~60FPS)
         setHands(detectedHands);
         lastUpdate.current = now;
       }
