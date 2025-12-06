@@ -189,54 +189,7 @@ function App() {
       />
       {showPerformanceStats && <PerformanceStats hands={hands} isTracking={isTracking} />}
       
-      <footer
-  style={{
-    backgroundColor: '#1f2937',
-    color: '#f3f4f6',
-    padding: '20px 0',
-    textAlign: 'center',
-    fontSize: '0.9rem',
-    fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-  }}
->
-  <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-    <p style={{ margin: '5px 0' }}>
-      © {new Date().getFullYear()} <strong>Junayed Bin Karim</strong> | Built with React
-    </p>
-    <p style={{ margin: '5px 0' }}>
-      <a
-        href="https://meetjunayed.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          color: '#60a5fa',
-          textDecoration: 'none', 
-          margin: '0 5px',
-        }}
-        onMouseOver={e => (e.target.style.color = '#3b82f6')}
-        onMouseOut={e => (e.target.style.color = '#60a5fa')}
-      >
-        Portfolio
-      </a>
-      |
-      <a
-        href="https://www.linkedin.com/in/junayed-bin-karim-47b755270/"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          color: '#60a5fa',
-          textDecoration: 'none',
-          margin: '0 5px',
-        }}
-        onMouseOver={e => (e.target.style.color = '#3b82f6')}
-        onMouseOut={e => (e.target.style.color = '#60a5fa')}
-      >
-        LinkedIn
-      </a>
-    </p>
-  </div>
-</footer>
-
+      
     </div>
   );
 }
